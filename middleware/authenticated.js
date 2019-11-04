@@ -1,12 +1,10 @@
-export default async function({ $axios, req, res }) {
-  const url = `${req.protocol}://${req.headers.host}/authStatus`
-
+export default async function({ $axios, redirect }) {
   try {
-    const check = await $axios.get(url)
+    const check = await $axios.get('/authStatus')
     if (!check.data || !check.data.authenticated) {
-      res.redirect('/login')
+      redirect('/login')
     }
   } catch (e) {
-    res.redirect('/login')
+    redirect('/login')
   }
 }

@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export default {
   data() {
     return {
@@ -56,7 +54,7 @@ export default {
     },
 
     postIdTokenToSessionLogin(url, idToken, csrfToken) {
-      return axios({
+      return this.$axios({
         url,
         data: JSON.stringify({ csrfToken, idToken }),
         headers: { 'Content-Type': 'application/json' },
